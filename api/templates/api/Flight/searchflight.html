@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        {% if flights %}
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Flight Number</th>
+                                    <th>Take off point</th>
+                                    <th>Destination</th>
+                                    <th>price</th>
+                                    <th>Flight Class</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                {% for flight in flights %}
+                                    <tbody class="tab-content">
+                                    <tr>
+                                        <td>{{ flight.flight_number }}</td>
+                                        <td>{{ flight.take_off_point }}</td>
+                                        <td>{{ flight.destination }}</td>
+                                        <td>{{ flight.price }}</td>
+                                        <td>{{ flight.flight_class }}</td>
+                                        <td>
+                                            <a class="btn btn-dark" href="{% url 'crete_passenger' %}">Book</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+{% endblock %}

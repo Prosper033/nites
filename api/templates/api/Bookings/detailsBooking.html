@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if booking %}
+        <div class="container">
+            <div class="row">
+                <div class="card col-md-12">
+                    <div class="card-header">
+                        <h3>Create Booking</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="booking_reference" class="form-check-label">Booking Reference:</label>
+                            <label id="booking_reference" type="text"
+                                   class="form-control">{{ booking.booking_reference }}</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="take_off_point" class="form-check-label">Take_off_point</label>
+                                <label id="take_off_point" type="text" class="form-control"
+                                >{{ booking.take_off_point }}</label>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="take_off_time" class="form-check-label">Take_off_time</label>
+                                <label class="form-control" id="take_off_time" type="date"
+                                >{{ booking.take_off_time }}</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="price" class="form-check-label">Price:</label>
+                                <label id="price" class="form-control" type="number"
+                                >{{ booking.price }}</label>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="flight_class" class="form-check-label">Flight class</label>
+                                <label class="form-control" type="text" id="flight_class"
+                                >{{ booking.flight_class }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="card-link" href="{% url 'index_booking' %}">Back to list</a>
+                        &nbsp;
+                        <button class="btn btn-success" type="submit">submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if passenger %}
+    <div class="card mx-auto body1" style="width: 700px">
+        <div class="card-header">
+            <h3>Passenger: {{ passenger.name }}</h3>
+        </div>
+        <div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <label class="form-control">{{ passenger.name }}</label>
+                </div>
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <label class="form-control">{{ passenger.phone }}</label>
+                </div>
+                <div class="form-group">
+                    <label>Address:</label>
+                    <label class="form-control">{{ passenger.address }}</label>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <label class="form-control">{{ passenger.email }}</label>
+                </div>
+                <div class="ml-5 btn btn-dark">
+                    <a href="{% url 'index_passenger' %}">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="bg-secondary">
+        <p class="text-lg-center">None passenger exit</p>
+        <a href="{% url ''%}" class="btn btn-block btn-block">Register as a passenger</a>
+    </div>
+{% endif %}
+{% endblock %}

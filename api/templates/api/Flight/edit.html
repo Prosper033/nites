@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="card p-12">
+                <div class="card-header">
+                    <h3 class="card-title">Flight details:{{flight.flight_number}}</h3>
+                </div>
+                <form action="{% url 'edit' flight_id%}" method="POST">
+                    {% if saved is True %}
+                        <div class="alert alert-success">The flight was successfully saved.</div>
+                    {% elif saved is False %}
+                        <div class="alert alert-danger">An error occurred while saving the flight.</div>
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="form-group row">
+                            {% csrf_token %}
+                            <label for="flightNumber" class="form-label">Flight Number:</label>
+                            <input type="text" id="flightNumber" name="flightNumber"
+                                   value="{{ flight.flight_number }}" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="aircraftId" class="form-label">Aircraft Number:</label>
+                            <select type="text" id="aircraftId" name="aircraftId" class="form-control">
+                                {% for a in aircraft %}
+                                    <option label="{{ a.text }}" value="{{ a.id }}">{{ a.text }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="take_off_point" class="form-label">Take-Off Point:</label>
+                            <input type="text" id="flightNumber" name="take_off_point"
+                                   value="{{ flight.take_off_point }}" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="take_off_time" class="form-label">Take-Off Time:</label>
+                            <input type="date" id="flightNumber" name="take_off_time"
+                                   value="{{ flight.take_off_time }}" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="destination" class="form-label">destination:</label>
+                            <input type="text" id="flightNumber" name="destination"
+                                   value="{{ flight.destination }}" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="price" class="form-label">Price:</label>
+                            <input type="text" id="flightNumber" name="price"
+                                   value="{{ flight.price }}" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="flight_class" class="form-label">class:</label>
+                            <input type="text" id="flightNumber" name="flight_class"
+                                   value="{{ flight.flight_class }}" class="form-control">
+                        </div>
+                        <div class="card-footer">
+                            <a class="card-link" href="{% url "index" %}">Back to list</a>
+                            &nbsp;&nbsp;
+                            <button class="btn btn-success" type="submit">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

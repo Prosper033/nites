@@ -1,0 +1,19 @@
+.body1{
+    background-image: url("../img/air2.jpg");
+    background-repeat: no-repeat;
+}
+.bodymain{
+    background-image: url("../img/plane-2.jpg");
+    /*background-repeat: no-repeat;*/
+    background-size: cover;
+}
+.move{
+    margin-left: 10%;
+}
+.mytable{
+    background-image: url("../img/air2.jpg");
+    background-size: cover;
+}
+.myfooter{
+    line-height: inherit;
+}

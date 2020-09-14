@@ -4,5 +4,5 @@ from .models import *
 
 admin.site.register(Flight)
 admin.site.register(Aircraft)
-admin.site.register(Passenger)
 admin.site.register(Booking)
+admin.site.register(Passenger)
