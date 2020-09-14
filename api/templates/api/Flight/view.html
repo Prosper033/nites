@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        {% if flight %}
+            <div class="row mt-5 mb-5">
+                <div class="col-md-8 offset-2">
+                    <div class="card p-12 body1 mx-auto" style="width: 700px">
+                        <div class="card-header">
+                            <h3 class="card-title">Flight details:{{ flight.flight_number }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label class="form-label">Flight Number:</label>
+                                    <label class="form-control disabled">{{ flight.flight_number }}</label>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label class="form-label">Aircraft Number:</label>
+                                    <label class="form-control disabled">{{ flight.aircraft_number }}</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label class="form-label">Take-off Point:</label>
+                                    <label class="form-control disabled">{{ flight.take_off_point }}</label>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label class="form-label">Take-Off_Time:</label>
+                                    <label class="form-control disabled">{{ flight.take_off_time }}</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label class="form-label">Destination:</label>
+                                    <label class="form-control disabled">{{ flight.destination }}</label>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label class="form-label">Flight class:</label>
+                                    <label class="form-control disabled">{{ flight.flight_class }}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Price:</label>
+                                <label class="form-control disabled">{{ flight.price }}</label>
+                            </div>
+
+                        </div>
+                        <div class="card-footer card-link">
+                            <a class="btn-warning btn text-capitalize" href="{% url "index" %}">Back to list</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

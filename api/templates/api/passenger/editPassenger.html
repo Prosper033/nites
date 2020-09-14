@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card mx-auto body1" style="width: 700px">
+        <div class="card-header">
+            <h3>Passenger details:{{ Passenger.name }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'edit_passenger' passenger.name  %}" method="post">
+                {% if saved is False %}
+                    <div class="alert alert-danger">An error occurred while trying to save the aircraft</div>
+                {% elif saved is True %}
+                    <div class="alert-danger alert">Your changes have been saved</div>
+                {% endif %}
+                <div>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name:</label>
+                        <input name="name" class="form-control" type="text" value="{{ Passenger.name }}" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone:</label>
+                        <input name="phone" class="form-control" type="tel" value="{{ Passenger.phone }}" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input name="email" class="form-control" value="{{ Passenger.email }}" type="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="form-check-label">Address:</label>
+                        <input name="address" class="form-control" type="text" value="{{ Passenger.address }}" id="address">
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'index_passenger' %}">Back to the list</a>
+                        &nspar;
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

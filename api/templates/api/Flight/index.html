@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        {% if flights %}
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="btn-warning btn text-capitalize"><a href="{% url 'create' %}">Add flight</a></h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-md-center">Aircraft Number</th>
+                                    <th class="text-md-center">Flight Number</th>
+                                    <th class="text-md-center">Take off point</th>
+                                    <th class="text-md-center">Destination</th>
+                                    <th class="text-md-center">price</th>
+                                    <th class="text-md-center">Flight Class</th>
+                                    <th class="text-md-center">Action</th>
+                                </tr>
+                                </thead>
+                                {% for flight in flights %}
+                                    <tbody>
+                                    <tr>
+                                        <td>{{flight.aircraft_number}}</td>
+                                        <td>{{flight.flight_number}}</td>
+                                        <td>{{flight.take_off_point}}</td>
+                                        <td>{{flight.destination}}</td>
+                                        <td>{{flight.price}}</td>
+                                        <td>{{flight.flight_class}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-info" href="{% url 'details' flight.id %}">details</a>
+                                                <a class="btn btn-success" href="{% url 'edit' flight.id %}">edit</a>
+                                                <a class="btn btn-danger" href="{% url 'delete' flight.id %}">delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h2><a href="{% url 'create' %}">Add flight</a></h2>
+            <p>No flight is available</p>
+        {% endif %}
+    </div>
+{% endblock %}

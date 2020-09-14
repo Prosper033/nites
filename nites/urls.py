@@ -16,7 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from api.views import home
+
 urlpatterns = [
+    path('', home.index, name='api_index'),
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls'))
+    path('flight/', include('api.views.flights.urls')),
+    path('aircraft/', include('api.views.aircraft.aircraft_urls')),
+    path('passenger/', include('api.views.passenger.passenger_urls')),
+    path('booking/', include('api.views.booking.booking_urls'))
 ]

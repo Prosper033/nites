@@ -1,0 +1,57 @@
+
+body {
+  padding-top: 56px;
+}
+
+
+.carousel-item {
+  height: 65vh;
+  min-height: 800px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+
+.destination-img img {
+  width: 320px;
+  height: 253px;
+}
+.form2{
+  position: relative;
+  left: auto;
+  top: inherit;
+}
+
+.parent-container{
+
+  width: 100%;
+
+  height: auto;
+
+  position: relative;
+
+}
+.formon{
+
+  position: absolute;
+
+  width:50%;
+
+  height: 10%;
+
+  top: 20%;
+
+  left: 550px;
+
+  z-index: 1500;
+
+  background-color: transparent;
+
+}

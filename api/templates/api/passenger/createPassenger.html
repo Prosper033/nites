@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5 mb-5 ml-auto">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Passenger's info:</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'crete_passenger' %}" method="POST">
+                            {% if saved is False %}
+                                <div class="alert alert-danger">An error occurred while trying to save the aircraft</div>
+                            {% endif %}
+                            <div>
+                                <div class="form-row">
+                                    <div class="form-group col-6">
+                                        {% csrf_token %}
+                                        <label for="name" class="form-label">Name:</label>
+                                        <input name="name" class="form-control" type="text" value="{{ passenger.name }}" id="name">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="phone" class="form-label">Phone:</label>
+                                        <input name="phone" class="form-control" type="text" value="{{ passenger.phone }}" id="name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-6">
+                                        <label for="email" class="form-label">Email:</label>
+                                        <input name="email" class="form-control" value="{{ passenger.email }}" type="text" id="email">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="address" class="form-check-label">Address:</label>
+                                        <input name="address" class="form-control" type="text" value="{{ passenger.address }}" id="address">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="flight" class="form-check-label">Flight_number</label>
+                                    <input value="{{ flight.flight_number }}" name="flight" type="text"  id="flight" disabled>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{% url 'create_booking' %}" class="btn btn-success">Continue >></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

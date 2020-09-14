@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        {% if bookings %}
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="{% url 'create_booking' %}" class="btn btn-warning">Book</a>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Flight number:</th>
+                                    <th>Booking reference</th>
+                                    <th>Destination</th>
+                                    <th>Take off point</th>
+                                    <th>Take off time</th>
+                                    <th>Price</th>
+                                    <th>Flight class</th>
+                                </tr>
+                                </thead>
+                                {% for booking in bookings %}
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ booking.flight_number }}</td>
+                                        <td>{{ booking.booking_reference }}</td>
+                                        <td>{{ booking.destination }}</td>
+                                        <td>{{ booking.take_off_point }}</td>
+                                        <td>{{ booking.take_off_time }}</td>
+                                        <td>{{ booking.price }}</td>
+                                        <td>{{ booking.flight_class }}</td>
+                                        <td class="btn-group">
+                                            <a class="btn btn-info" href="{% url 'details_booking' booking.id %}">Details</a>
+                                            <a class="btn btn-success"
+                                               href="{% url 'edit_booking' booking.id %}">Edit</a>
+                                            <a class="btn btn-danger" href="{% url 'delete_booking'  booking.id %}">Delete</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <p class="mt-5 text-info text-center">No booking Available</p>
+                <a class="btn btn-success" href="{% url 'create_booking' %}">create booking</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

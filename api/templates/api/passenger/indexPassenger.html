@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        {% if passengers %}
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="btn text-capitalize btn-secondary btn-warning" href="{% url 'crete_passenger'%}">Register</a>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-md-center">Name:</th>
+                                    <th class="text-md-center">Phone:</th>
+                                    <th class="text-md-center">Address</th>
+                                    <th class="text-md-center">Email</th>
+                                    <th class="text-md-center">Action</th>
+                                </tr>
+                                </thead>
+                                {% for passenger in passengers %}
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ passenger.name }}</td>
+                                        <td>{{ passenger.phone }}</td>
+                                        <td>{{ passenger.address }}</td>
+                                        <td>{{ passenger.email }}</td>
+                                        <td>
+                                            <a href="{% url 'edit_passenger' passenger.name %}" class="btn btn-success" >Edit</a>
+                                            <a class="btn btn-success" href="{% url 'details_passenger' passenger.name %}">Details</a>
+                                            <a class="btn btn-danger" href="{% url 'delete_passenger' passenger.name  %}">Delete</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}
